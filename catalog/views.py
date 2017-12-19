@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from .models import Subcategorie
 import json
 
+
 def get_subcategory(request):
     id = request.GET.get('id','')
-    result = [u.__dict__ for u in Subcategorie.objects.filter(category_id_id=id)]
+    result = list(Subcategorie.objects.filter(category_id_id=int(id)).values('id', 'display_name'))
     return HttpResponse(json.dumps(result), content_type="application/json")
