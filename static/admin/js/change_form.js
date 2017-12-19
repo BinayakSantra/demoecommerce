@@ -1,0 +1,15 @@
+<script type="text/javascript" charset="utf-8">
+        $(function(){
+            # inspect html to check id of category select dropdown.
+            $("select#id_category_id").change(function(){
+                $.getJSON("/getSubcategory/",{id: $(this).val()}, function(j){
+                     var options = '<option value="">---------</option>';
+                     for (var i = 0; i < j.length; i++) {
+                         options += '<option value="' + j[i].id + '">' + j[i].name + '</option>';
+                     }
+                     # inspect html to check id of subcategory select dropdown.
+                     $("select#id_subcategory_id").html(options);
+                 });
+             });
+         });
+</script>
