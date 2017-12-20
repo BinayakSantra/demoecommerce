@@ -1,7 +1,7 @@
 
 $(function(){
     // inspect html to check id of category select dropdown.
-    $("select#id_category_id").change(function(){
+    $(document).on('change', "select#id_category_id", function(){
         $.getJSON("/getSubcategory/",{id: $(this).val()}, function(j){
              var options = '<option value="">---------</option>';
              for (var i = 0; i < j.length; i++) {
